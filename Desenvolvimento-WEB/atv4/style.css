@@ -1,0 +1,164 @@
+/* Reset básico e configurações de box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    
+    /* Configuração do CSS Grid para o layout macro */
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "content sidebar"
+        "footer footer";
+    grid-template-columns: 1fr 300px; /* Conteúdo flexível e Sidebar fixa em 300px */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Cabeçalho com Flexbox --- */
+header {
+    grid-area: header;
+    background-color: #fff;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 4px solid #0077b6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-bottom: 15px;
+    color: #0077b6;
+}
+
+header nav ul {
+    display: flex; /* Flexbox para alinhar os links horizontalmente */
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #0077b6;
+}
+
+/* --- Conteúdo Principal (Main / Article) --- */
+main {
+    grid-area: content;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.data-publicacao {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+article h2 {
+    margin-bottom: 15px;
+    color: #222;
+}
+
+article p {
+    margin-bottom: 15px;
+}
+
+figure {
+    margin-top: 25px;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+figcaption {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* --- Barra Lateral (Aside) --- */
+aside {
+    grid-area: sidebar;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+aside h3 {
+    border-bottom: 2px solid #0077b6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    margin-bottom: 12px;
+}
+
+aside a {
+    text-decoration: none;
+    color: #0077b6;
+    font-size: 0.95rem;
+}
+
+aside a:hover {
+    text-decoration: underline;
+}
+
+/* --- Rodapé --- */
+footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* --- Media Query para Responsividade --- */
+@media (max-width: 768px) {
+    body {
+        /* Altera o grid para uma única coluna no mobile */
+        grid-template-areas: 
+            "header"
+            "content"
+            "sidebar"
+            "footer";
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    header nav ul {
+        flex-direction: column; /* Links empilhados no mobile */
+        gap: 10px;
+    }
+
+    main {
+        padding: 20px;
+    }
+}
